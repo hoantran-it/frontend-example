@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var cssnano = require('gulp-cssnano');
 var sourcemaps = require('gulp-sourcemaps');
 var sass = require('gulp-sass');
+var rename = require('gulp-rename');
 
 var src = "app";
 var target = "build";
@@ -18,6 +19,7 @@ gulp.task('sass', function () {
 gulp.task('css-compress', ['sass'], function () {
   gulp.src(target + '/styles.css')
     .pipe(cssnano())
+    .pipe(rename({suffix: '.min'}))
     .pipe(gulp.dest(resource));
 });
 
