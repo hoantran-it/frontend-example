@@ -1,9 +1,17 @@
-var {render} = ReactDOM;
+import reactor from './reactor';
+import Store from './stores/Store';
+import UserListComponent from './components/UserListComponent';
 
-let renderingObj = (
+reactor.registerStores({store: Store});
+
+const App = () => (
   <div>
-      React application render here
+        <div>React Application render here</div>
+        <UserListComponent />
   </div>
 );
 
-render(renderingObj, document.querySelector('#react'));
+ReactDOM.render(
+  <App />,
+  document.querySelector('#react')
+);
