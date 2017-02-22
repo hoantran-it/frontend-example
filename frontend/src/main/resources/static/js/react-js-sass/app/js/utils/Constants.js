@@ -5,7 +5,8 @@ export default {
   STORE_NAME: "store",
 
   USER_REST: {
-    GET_ALL: USER_REST_BASE + "/getAll"
+    GET_ALL: USER_REST_BASE + "/getAll",
+    GET_BY_GENDER: USER_REST_BASE + "/getUserByGender"
   },
 
   USER: {

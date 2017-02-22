@@ -6,6 +6,12 @@ import UserComponent from "../components/UserComponent";
 const UserListComponent = React.createClass({
     mixins: [reactor.ReactMixin],
     
+    getInitialState: function () {
+        return {
+          isMale: true
+        };
+    },
+    
     componentWillMount: function () {
         UserAction.getUserList();
     },
@@ -17,14 +23,18 @@ const UserListComponent = React.createClass({
     },
       
     onTrigger: function () {
-        UserAction.getUserList();
+        UserAction.getUserListByGender(this.state.isMale);
         this.setState({
-          currentPage: 0
+          isMale: !this.state.isMale
         });
     },
       
     render: function () {
         let userList = "";
+        let buttonLabel = "Get female list";
+        if(this.state.isMale) {
+            buttonLabel = "Get male list";
+        }
         if(typeof this.state.userList != 'undefined'){
             let users = this.state.userList.toJS();
             userList = users.map((item, index) => {
@@ -32,7 +42,8 @@ const UserListComponent = React.createClass({
                         <UserComponent  key={index}
                                         userName={item.userName}
                                         userId={item.id}
-                                        userAge={item.age} />
+                                        userAge={item.age}
+                                        userGender={item.isMale} />
                 );
             });
           }
@@ -40,7 +51,7 @@ const UserListComponent = React.createClass({
         return (
             <div>
                 <button onClick={this.onTrigger}>
-                    <b>Trigger</b>
+                    <b>{buttonLabel}</b>
                 </button>
                 <br/>
                 <ul>

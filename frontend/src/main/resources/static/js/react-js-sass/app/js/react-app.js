@@ -7,6 +7,7 @@ reactor.registerStores({store: Store});
 const App = () => (
   <div>
         <div>React Application render here</div>
+        <br/>
         <UserListComponent />
   </div>
 );

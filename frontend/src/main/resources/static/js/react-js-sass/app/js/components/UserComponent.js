@@ -2,16 +2,17 @@ const UserComponent = React.createClass({
     propTypes: {
         userName: React.PropTypes.string.isRequired,
         userId: React.PropTypes.number.isRequired,
-        userAge: React.PropTypes.number.isRequired
+        userAge: React.PropTypes.number.isRequired,
+        userGender: React.PropTypes.bool
     }, 
     
     render: function () {
+        let gender = "Female";
+        if(this.props.userGender){
+            gender = "Male";
+        }
         return (
-            <li>
-                <div >{this.props.userName}</div>
-                <div >{this.props.userId}</div>
-                <div >{this.props.userAge}</div>
-            </li>
+            <li>{this.props.userId} - {this.props.userName} - {gender} - {this.props.userAge} years old</li>
         )
     }
 });
