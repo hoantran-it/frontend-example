@@ -4,7 +4,7 @@ import getters from "../../getters";
 const functions = {
 
   getUserList(state, payload) {
-      return state.setIn(lodash.concat(getters.User.userList), Nuclear.toImmutable(payload));
+    return state.setIn(lodash.concat(getters.User.userList), Nuclear.toImmutable(payload));
   },
 
   initialize(store) {

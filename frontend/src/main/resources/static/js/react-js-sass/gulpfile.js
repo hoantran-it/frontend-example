@@ -10,22 +10,22 @@ var rename = require('gulp-rename');
 
 var src = "app";
 var target = "build";
-var resource ="../../dist";
-  
+var resource = "../../dist";
+
 gulp.task('react', function () {
-    return browserify({entries: src + '/js/app.js', extensions: ['js'], debug: true})
-      .transform('babelify', {
-        presets: ['es2015', 'react', 'stage-0'],
-        plugins: ["transform-object-assign"]
-      })
-      .bundle()
-      .on('error', function (err) {
-        console.log(err.toString());
-        this.emit("end");
-      })
-      .pipe(source('bundle.js'))
-      .pipe(gulp.dest(target));
-  });
+  return browserify({entries: src + '/js/app.js', extensions: ['js'], debug: true})
+    .transform('babelify', {
+      presets: ['es2015', 'react', 'stage-0'],
+      plugins: ["transform-object-assign"]
+    })
+    .bundle()
+    .on('error', function (err) {
+      console.log(err.toString());
+      this.emit("end");
+    })
+    .pipe(source('bundle.js'))
+    .pipe(gulp.dest(target));
+});
 
 gulp.task('sass', function () {
   return gulp.src(src + '/sass/**/*.scss')
@@ -35,7 +35,7 @@ gulp.task('sass', function () {
     .pipe(gulp.dest(target));
 });
 
-gulp.task('js-compress', [ 'react' ], function() {
+gulp.task('js-compress', ['react'], function () {
   gulp.src(target + '/bundle.js')
     .pipe(uglify())
     .pipe(rename({suffix: '.min'}))

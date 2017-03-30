@@ -1,4 +1,4 @@
-var URL_REST_BASE = 'https://ithink-backend.herokuapp.com';
+var URL_REST_BASE = 'http://localhost:8088';
 var USER_REST_BASE = URL_REST_BASE + '/user';
 
 export default {
@@ -11,7 +11,7 @@ export default {
 
   USER: {
     ACTIONS: {
-        GET_USER_LIST: "USER.ACTIONS.GET_USER_LIST"
+      GET_USER_LIST: "USER.ACTIONS.GET_USER_LIST"
     }
   },
 };
